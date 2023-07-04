@@ -21,7 +21,10 @@
             @endif
             @endforeach
         </form>
+    <p><a href="javascript:history.go(-1)"> Voltar para a página anterior </a></p>
+
     </main>
+
 </body>
 
 </html>

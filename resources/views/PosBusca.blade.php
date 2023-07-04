@@ -3,48 +3,46 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Pagina de Formulario</title>
+    <title>Página de Formulário</title>
     <link rel="stylesheet" href="css/app.css">
-    <title>CPF INVÁLIDO</title>
 </head>
 
 <body>
-
-
-
     <main>
-        <h2>Cliente : </h2>
+        <h2>Cliente:</h2>
         <center>
-            <h3> {{ $dadosPosBuscaApi['avancado']['nome'] }}</h3>
-            <h3>
-                <font color="red"> {{ $dadosPosBuscaApi['avancado']['cpf'] }}
-            </h3>
-            </font>
+            <h3>{{ $dadosPosBuscaApi['avancado']['nome'] }}</h3>
+            <h3><font color="red">{{ $dadosPosBuscaApi['avancado']['cpf'] }}</font></h3>
         </center>
+            
+        <form method="POST" action="{{ route('dadosPessoal', ['cpf' => $dadosPosBuscaApi['avancado']['cpf']]) }}">
+            @csrf
+            <!-- Botão Dados Pessoais -->
+            <button type="submit" name="botao_dados_pessoais">Dados Pessoais</button>
+        </form>
 
-        <Form>
+        <form method="POST" action="{{ route('dadosCNPJ', ['cpf' => $dadosPosBuscaApi['avancado']['cpf']]) }}">
+            @csrf
+            <!-- Botão Dados CNPJ -->
+            <button type="submit" name="botao_cnpj">Dados CNPJ</button>
+        </form>
 
-            <input type="hidden" id="cpf_id" value="" name="cpf">
-            <!-- Botao Dados Pessoais -->
-            <input type="submit" name="botao_dados" value="Inf. Pessoal" >
-            <!-- Botao Dados CNPJ -->
-            <input type="submit" name="botao_cnpj" value="Dados CNPJ">
-            <!-- Botao Veiculos -->
-            <input type="submit" name="botao_veiculos" value="Veículos">
-            <!-- Botao Imoveis -->
-            <input type="submit" name="botao_imoveis" value="Imoveis">
-            <!-- Botao Assinaturas -->
-            <input type="submit" name="botao_assinaturas" value="Assinaturas">
-            <!-- Botao Telefones -->
-            <input type="submit" name="botao_telefones" value="Telefones">
-            </Form:post>
+        <form method="POST" action="{{ route('veiculos', ['cpf' => $dadosPosBuscaApi['avancado']['cpf']]) }}">
+            @csrf
+            <!-- Botão Veículos -->
+            <button type="submit" name="botao_veiculos">Veículos</button>
+        </form>
 
-            <!-- Botão de voltar Página  -->
-            <p><a href="javascript:history.go(-1)"> Voltara a Página de Busca </a></p>
+        <form method="POST" action="{{ route('assinaturas', ['cpf' => $dadosPosBuscaApi['avancado']['cpf']]) }}">
+            @csrf
+            <!-- Botão Assinaturas -->
+            <button type="submit" name="botao_assinaturas">Assinaturas</button>
+        </form>
+
+        <p><a href="javascript:history.go(-1)"> Voltar para a página anterior </a></p>
+        
 
     </main>
-
-
 </body>
 
 </html>

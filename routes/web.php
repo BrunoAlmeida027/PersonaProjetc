@@ -20,7 +20,8 @@ Route::get('/Erro', function(){
     return view('Erro');
 });
 
-Route::get('DadosPessoal', 'App\Http\Controllers\ApiController@dadosPessoalApi');
+Route::post('DadosPessoal', 'App\Http\Controllers\ApiController@dadosPessoalApi');
+Route::get('DadosPessoal', 'App\Http\Controllers\ApiController@exibirDadosPessoais')->name('dadosPessoal');
 
 // ROTAS PARA PAGINA  :    P O S B U S C A 
 
@@ -30,10 +31,17 @@ Route::get('PosBusca', 'App\Http\Controllers\ApiController@dadosPosBuscaApi');
 
 // ROTAS PARA PAGINA : V E I C U L O S 
 
-Route::get('Veiculos', 'App\Http\Controllers\ApiController@dadosVeiculos');
+Route::post('Veiculos', 'App\Http\Controllers\ApiController@dadosVeiculos');
+Route::get('/Veiculos', 'ApiController@exibirVeiculos')->name('veiculos');
 
 // ROTAS PARA PAGINA : A S S I N A T U R A S 
 
-Route::get('Assinatura', 'App\Http\Controllers\ApiController@assinaturas');
+Route::post('Assinatura', 'App\Http\Controllers\ApiController@assinaturas')->name('assinaturas');
+
+// ROTAS PARA PAGINA : E M P R E S A S 
+
+Route::get('Empresas', 'App\Http\Controllers\ApiController@dadosEmpresas');
+
+Route::post('Empresas', 'App\Http\Controllers\ApiController@dadosEmpresas')->name('dadosCNPJ');
 
 
