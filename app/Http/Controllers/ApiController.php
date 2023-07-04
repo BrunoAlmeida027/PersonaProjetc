@@ -30,6 +30,13 @@ class ApiController extends Controller
     return view('Empresas', ["dadosEmpresas" => $dados]);
   }
 
+  public function dadosImoveis()
+  {
+    $dados = Http::get('https://test.alertrack.com.br/api/test_web/profile/get')->json();
+    // dd($dados);
+    return view('Imoveis', ["dadosImoveis" => $dados]);
+  }
+
   public function dadosVeiculos()
   {
     $dados = Http::get('https://test.alertrack.com.br/api/test_web/profile/get')->json();
