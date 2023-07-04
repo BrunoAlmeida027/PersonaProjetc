@@ -10,53 +10,67 @@
 </head>
 
 <body>
-
-    @php $cnpj1 = $dadosEmpresas['avancado']['sociedades'][0]['cnpjempresasocio'];
-    $resultado_cnpj1 = Json_decode(file_get_contents("https://receitaws.com.br/v1/cnpj/".$cnpj1));
+    @php
+    $cnpj1 = $dadosEmpresas['avancado']['sociedades'][0]['cnpjempresasocio'];
+    $resultado_cnpj1 = json_decode(file_get_contents("https://receitaws.com.br/v1/cnpj/" . $cnpj1));
+    $cnpj2 = $dadosEmpresas['avancado']['sociedades'][1]['cnpjempresasocio'];
+    $resultado_cnpj2 = json_decode(file_get_contents("https://receitaws.com.br/v1/cnpj/" . $cnpj2));
     @endphp
 
-    @php $cnpj2 = $dadosEmpresas['avancado']['sociedades'][1]['cnpjempresasocio'];
-    $resultado_cnpj2 = Json_decode(file_get_contents("https://receitaws.com.br/v1/cnpj/".$cnpj2));
-    @endphp
-
-    @if (!$resultado_cnpj1 || isset ($resultado_cnpj1->erro))
-    echo " CNPJ INVÁLIDO";
+    @if (!$resultado_cnpj1 || isset($resultado_cnpj1->erro))
+    CNPJ INVÁLIDO
     @else
     <main><br>
         <form>
-            <h2>Empresa: {{$resultado_cnpj1->nome }} </h2>
-            <b><br>CNPJ: {{$resultado_cnpj1->cnpj}}
-                <b><br>Status: <font color=green> {{$resultado_cnpj1->status}}</font>
-                    <b><br>Tipo da Empresa: {{$resultado_cnpj1->tipo}}
-                        <b><br>Porte: {{$resultado_cnpj1->porte}}
-                            <b><br>Participação Sociedade: {{$dadosEmpresas['avancado']['sociedades'][1]['participacaosociedade']}} %
-                                <b><br>Data de Abertura: {{$resultado_cnpj1->abertura}}
-                                    <b><br>Natureza Jurídica: {{ $resultado_cnpj1->natureza_juridica}}
-                                        <b><br>logradouro: {{$resultado_cnpj1->logradouro}}
-                                            <b><br>Número: {{$resultado_cnpj1->numero}}
-                                                <b><br>Complemento: {{$resultado_cnpj1->complemento}}
-                                                    <b><br>CEP: {{$resultado_cnpj1->cep}}
-                                                        <b><br>Capital: <font color=green> R$ {{ $resultado_cnpj1->capital_social}}</font><br>
-                                                            <hr>
+            @php
+            $campocnpj1 = [
+            'Empresa' => $resultado_cnpj1->nome,
+            'CNPJ' => $resultado_cnpj1->cnpj,
+            'Status' => $resultado_cnpj1->status,
+            'Tipo da Empresa' => $resultado_cnpj1->tipo,
+            'Porte' => $resultado_cnpj1->porte,
+            'Participação Sociedade' => $dadosEmpresas['avancado']['sociedades'][1]['participacaosociedade'],
+            'Data de Abertura' => $resultado_cnpj1->abertura,
+            'Natureza Jurídica' => $resultado_cnpj1->natureza_juridica,
+            'logradouro' => $resultado_cnpj1->logradouro,
+            'Número' => $resultado_cnpj1->numero,
+            'Complemento' => $resultado_cnpj1->complemento,
+            'CEP' => $resultado_cnpj1->cep,
+            'Capital' => $resultado_cnpj1->capital_social
+            ];
 
-                                                            <h2>Empresa: {{$resultado_cnpj2->nome }} </h2>
-                                                            <b><br>CNPJ: {{$resultado_cnpj2->cnpj}}
-                                                                <b><br>Status: <font color=green> {{$resultado_cnpj2->status}}</font>
-                                                                    <b><br>Tipo da Empresa: {{$resultado_cnpj2->tipo}}
-                                                                        <b><br>Porte: {{$resultado_cnpj2->porte}}
-                                                                            <b><br>Participação Sociedade: {{$dadosEmpresas['avancado']['sociedades'][1]['participacaosociedade']}} %
-                                                                                <b><br>Data de Abertura: {{$resultado_cnpj2->abertura}}
-                                                                                    <b><br>Natureza Jurídica: {{ $resultado_cnpj2->natureza_juridica}}
-                                                                                        <b><br>logradouro: {{$resultado_cnpj2->logradouro}}
-                                                                                            <b><br>Número: {{$resultado_cnpj2->numero}}
-                                                                                                <b><br>Complemento: {{$resultado_cnpj2->complemento}}
-                                                                                                    <b><br>CEP: {{$resultado_cnpj2->cep}}
-                                                                                                        <b><br>Capital: <font color=green> R$ {{ $resultado_cnpj2->capital_social}}</font><br>
-                                                                                                            @endif
+            $campocnpj2 = [
+            'Empresa' => $resultado_cnpj2->nome,
+            'CNPJ' => $resultado_cnpj2->cnpj,
+            'Status' => $resultado_cnpj2->status,
+            'Tipo da Empresa' => $resultado_cnpj2->tipo,
+            'Porte' => $resultado_cnpj2->porte,
+            'Participação Sociedade' => $dadosEmpresas['avancado']['sociedades'][1]['participacaosociedade'],
+            'Data de Abertura' => $resultado_cnpj2->abertura,
+            'Natureza Jurídica' => $resultado_cnpj2->natureza_juridica,
+            'logradouro' => $resultado_cnpj2->logradouro,
+            'Número' => $resultado_cnpj2->numero,
+            'Complemento' => $resultado_cnpj2->complemento,
+            'CEP' => $resultado_cnpj2->cep,
+            'Capital' => $resultado_cnpj2->capital_social
+            ];
+            @endphp
+
+            @foreach([$campocnpj1, $campocnpj2] as $campos)
+            <h2>Empresa: {{ $campos['Empresa'] }}</h2>
+            @foreach($campos as $campo => $valor)
+            @if($campo !== 'Empresa')
+            <b>{{ $campo }}:</b>
+            <b>{!! $valor !!}</b><br>
+            @endif
+            @endforeach
+            <hr>
+            @endforeach
+            <p><a href="javascript:history.go(-1)"> Voltar para a página anterior </a></p>
         </form>
-        <p><a href="javascript:history.go(-1)"> Voltar para a página anterior </a></p>
 
     </main>
+    @endif
 
 
 </body>
