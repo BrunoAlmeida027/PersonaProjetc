@@ -31,17 +31,28 @@
                 <button type="submit" name="botao_cnpj">Dados CNPJ</button>
             </form>
 
+            <form method="POST" action="{{ route('imoveis', ['cpf' => $dadosPosBuscaApi['avancado']['cpf']]) }}">
+                @csrf
+                <!-- Botão Imóveis -->
+                <button type="submit" name="botao_imoveis">Imóveis</button>
+            </form>
+
             <form method="POST" action="{{ route('veiculos', ['cpf' => $dadosPosBuscaApi['avancado']['cpf']]) }}">
                 @csrf
                 <!-- Botão Veículos -->
                 <button type="submit" name="botao_veiculos">Veículos</button>
             </form>
 
+
+
             <form method="POST" action="{{ route('assinaturas', ['cpf' => $dadosPosBuscaApi['avancado']['cpf']]) }}">
                 @csrf
                 <!-- Botão Assinaturas -->
                 <button type="submit" name="botao_assinaturas">Assinaturas</button>
             </form>
+
+
+
 
             <p><a href="javascript:history.go(-1)"> Voltar para a página anterior </a></p>
 

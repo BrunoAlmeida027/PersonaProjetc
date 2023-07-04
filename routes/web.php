@@ -44,4 +44,9 @@ Route::get('Empresas', 'App\Http\Controllers\ApiController@dadosEmpresas');
 
 Route::post('Empresas', 'App\Http\Controllers\ApiController@dadosEmpresas')->name('dadosCNPJ');
 
+// ROTAS PARA PAGINA : I M O V E I S 
+
+Route::get('Imoveis', 'App\Http\Controllers\ApiController@dadosImoveis');
+Route::post('Imoveis', 'App\Http\Controllers\ApiController@dadosImoveis')->name('imoveis');
+
 
