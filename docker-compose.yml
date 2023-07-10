@@ -36,15 +36,13 @@ services:
       - app-network
 
   # Redis Service
-  redis:
-    image: redis:alpine
-    container_name: redis
-    restart: unless-stopped
-    tty: true
-    ports:
-      - "6379:6379"
-    networks:
-      - app-network
+  redis: 
+  image: redis:4.0 
+  container_name: app_redis 
+  ports: 
+    - "6382:6379" 
+  redes: 
+    - app-network
 
 # Docker Networks
 networks:
