@@ -31,23 +31,23 @@ Route::get('PosBusca', 'App\Http\Controllers\ApiController@dadosPosBuscaApi');
 
 // ROTAS PARA PAGINA : V E I C U L O S 
 
-Route::post('Veiculos', 'App\Http\Controllers\ApiController@dadosVeiculos');
-Route::get('/Veiculos', 'ApiController@exibirVeiculos')->name('veiculos');
+Route::post('Veiculos', 'App\Http\Controllers\VeiculosController@dadosVeiculos');
+Route::get('/Veiculos', 'VeiculosController@exibirVeiculos')->name('veiculos');
 
 // ROTAS PARA PAGINA : A S S I N A T U R A S 
-Route::get('Empresas', 'App\Http\Controllers\ApiController@exibirassinaturas');
+Route::get('Empresas', 'App\Http\Controllers\AssinaturasController@exibirassinaturas');
 
-Route::post('Assinatura', 'App\Http\Controllers\ApiController@assinaturas')->name('assinaturas');
+Route::post('Assinatura', 'App\Http\Controllers\AssinaturasController@assinaturas')->name('assinaturas');
 
 // ROTAS PARA PAGINA : E M P R E S A S 
 
-Route::get('Empresas', 'App\Http\Controllers\ApiController@exibirEmpresas');
+Route::get('Empresas', 'App\Http\Controllers\EmpresasController@exibirEmpresas');
 
-Route::post('Empresas', 'App\Http\Controllers\ApiController@dadosEmpresas')->name('dadosCNPJ');
+Route::post('Empresas', 'App\Http\Controllers\EmpresasController@dadosEmpresas')->name('dadosCNPJ');
 
 // ROTAS PARA PAGINA : I M O V E I S 
 
-Route::get('Imoveis', 'App\Http\Controllers\ApiController@exibirImoveis');
-Route::post('Imoveis', 'App\Http\Controllers\ApiController@dadosImoveis')->name('imoveis');
+Route::get('Imoveis', 'App\Http\Controllers\ImoveisController@exibirImoveis');
+Route::post('Imoveis', 'App\Http\Controllers\ImoveisController@dadosImoveis')->name('imoveis');
 
 

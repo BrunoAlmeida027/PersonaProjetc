@@ -12,43 +12,13 @@ class ApiController extends Controller
   public function dadosPessoalApi()
   {
     $dados = Http::get('https://test.alertrack.com.br/api/test_web/profile/get')->json();
-    // dd($dados);
     return view('DadosPessoal', ["dadosApi" => $dados]);
   }
 
   public function dadosPosBuscaApi()
   {
     $dados = Http::get('https://test.alertrack.com.br/api/test_web/profile/get')->json();
-    // dd($dados);
     return view('PosBusca', ["dadosPosBuscaApi" => $dados]);
-  }
-
-  public function dadosEmpresas()
-  {
-    $dados = Http::get('https://test.alertrack.com.br/api/test_web/profile/get')->json();
-    // dd($dados);
-    return view('Empresas', ["dadosEmpresas" => $dados]);
-  }
-
-  public function dadosImoveis()
-  {
-    $dados = Http::get('https://test.alertrack.com.br/api/test_web/profile/get')->json();
-    // dd($dados);
-    return view('Imoveis', ["dadosImoveis" => $dados]);
-  }
-
-  public function dadosVeiculos()
-  {
-    $dados = Http::get('https://test.alertrack.com.br/api/test_web/profile/get')->json();
-    // dd($dados);
-    return view('Veiculos', ["DadosVeiculosApi" => $dados]);
-  }
-
-  public function assinaturas()
-  {
-    $dados = Http::get('https://test.alertrack.com.br/api/test_web/profile/get')->json();
-    // dd($dados);
-    return view('Assinatura', ["assinaturasApi" => $dados]);
   }
 
   public function buscarPerfil(Request $request)
@@ -71,6 +41,4 @@ class ApiController extends Controller
       }
     }
   }
-
-  
 }
