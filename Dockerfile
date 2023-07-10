@@ -1,12 +1,12 @@
 FROM php:7.2-fpm
 
-# Copy composer.lock and composer.json
+# Copiar composer.lock e composer.json
 COPY composer.lock composer.json /var/www/
 
-# Set working directory
+# Definir o diretório de trabalho
 WORKDIR /var/www
 
-# Install dependencies
+# Instalar dependências
 RUN apt-get update && apt-get install -y \
     build-essential \
     libpng-dev \
@@ -18,32 +18,40 @@ RUN apt-get update && apt-get install -y \
     vim \
     unzip \
     git \
-    curl
+    curl \
+    libonig-dev \
+    libzip-dev \
+    zlib1g-dev
 
-# Clear cache
+# Limpar o cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Install extensions
+# Instalar extensões do PHP
 RUN docker-php-ext-install pdo_mysql mbstring zip exif pcntl
-RUN docker-php-ext-configure gd --with-gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ --with-png-dir=/usr/include/
-RUN docker-php-ext-install gd
 
-# Install composer
+# Instalar extensão Redis
+RUN pecl install redis && docker-php-ext-enable redis
+
+# Instalar extensão GD
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) gd
+
+# Instalar o Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Add user for laravel application
+# Adicionar usuário para a aplicação Laravel
 RUN groupadd -g 1000 www
 RUN useradd -u 1000 -ms /bin/bash -g www www
 
-# Copy existing application directory contents
+# Copiar os arquivos existentes do diretório da aplicação
 COPY . /var/www
 
-# Copy existing application directory permissions
+# Copiar as permissões do diretório existente da aplicação
 COPY --chown=www:www . /var/www
 
-# Change current user to www
+# Mudar para o usuário www
 USER www
 
-# Expose port 9000 and start php-fpm server
+# Expor a porta 9000 e iniciar o servidor php-fpm
 EXPOSE 9000
 CMD ["php-fpm"]
