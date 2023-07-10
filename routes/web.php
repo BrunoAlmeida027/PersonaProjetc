@@ -25,9 +25,9 @@ Route::get('DadosPessoal', 'App\Http\Controllers\ApiController@exibirDadosPessoa
 
 // ROTAS PARA PAGINA  :    P O S B U S C A 
 
-Route::post('PosBusca', 'App\Http\Controllers\ApiController@buscarPerfil')->name('PosBusca');
+Route::post('PosBusca', 'App\Http\Controllers\PosBuscaController@buscarPerfil')->name('PosBusca');
 
-Route::get('PosBusca', 'App\Http\Controllers\ApiController@dadosPosBuscaApi');
+Route::get('PosBusca', 'App\Http\Controllers\PosBuscaController@dadosPosBuscaApi');
 
 // ROTAS PARA PAGINA : V E I C U L O S 
 
@@ -44,6 +44,7 @@ Route::post('Assinatura', 'App\Http\Controllers\AssinaturasController@assinatura
 Route::get('Empresas', 'App\Http\Controllers\EmpresasController@exibirEmpresas');
 
 Route::post('Empresas', 'App\Http\Controllers\EmpresasController@dadosEmpresas')->name('dadosCNPJ');
+
 
 // ROTAS PARA PAGINA : I M O V E I S 
 
