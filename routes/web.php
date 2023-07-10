@@ -35,18 +35,19 @@ Route::post('Veiculos', 'App\Http\Controllers\ApiController@dadosVeiculos');
 Route::get('/Veiculos', 'ApiController@exibirVeiculos')->name('veiculos');
 
 // ROTAS PARA PAGINA : A S S I N A T U R A S 
+Route::get('Empresas', 'App\Http\Controllers\ApiController@exibirassinaturas');
 
 Route::post('Assinatura', 'App\Http\Controllers\ApiController@assinaturas')->name('assinaturas');
 
 // ROTAS PARA PAGINA : E M P R E S A S 
 
-Route::get('Empresas', 'App\Http\Controllers\ApiController@dadosEmpresas');
+Route::get('Empresas', 'App\Http\Controllers\ApiController@exibirEmpresas');
 
 Route::post('Empresas', 'App\Http\Controllers\ApiController@dadosEmpresas')->name('dadosCNPJ');
 
 // ROTAS PARA PAGINA : I M O V E I S 
 
-Route::get('Imoveis', 'App\Http\Controllers\ApiController@dadosImoveis');
+Route::get('Imoveis', 'App\Http\Controllers\ApiController@exibirImoveis');
 Route::post('Imoveis', 'App\Http\Controllers\ApiController@dadosImoveis')->name('imoveis');
 
 

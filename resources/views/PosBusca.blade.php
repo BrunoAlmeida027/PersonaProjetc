@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Página de Busca</title>
+    <title>Menu de Busca</title>
     <link rel="stylesheet" href="css/app.css">
 </head>
 

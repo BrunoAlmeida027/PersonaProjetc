@@ -72,16 +72,5 @@ class ApiController extends Controller
     }
   }
 
-  public function exibirDadosPessoais($cpf)
-  {
-    // Faça a chamada à API ou consulte o banco de dados para obter os dados do CPF fornecido
-    $dadosPessoais = $this->buscarDadosPessoaisPorCPF($cpf);
-
-    // Verifique se os dados foram encontrados
-    if ($dadosPessoais) {
-      return view('DadosPessoal', ["dadosPessoais" => $dadosPessoais]);
-    } else {
-      // Retorne uma mensagem de erro ou redirecione para uma página de erro, caso necessário
-    }
-  }
+  
 }
