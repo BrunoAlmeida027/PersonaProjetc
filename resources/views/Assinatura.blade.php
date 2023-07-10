@@ -11,17 +11,20 @@
 
 <body>
     <main>
-    <h3>Assinaturas :</h3>
+        <h3>Assinaturas :</h3>
         <form>
             @foreach ($assinaturasApi['avancado']['servicos'] as $servico => $detalhes)
             @if ($detalhes['status'])
-           <b> <p>{{ $servico }}: <font color= "green">Ativo</font></p>
-            @else
-            <p>{{ $servico }}: <font color= "red">Inativo</font></p>
-            @endif
-            @endforeach
+            <b>
+                <p>{{ $servico }}: <font color="green">Ativo</font>
+                </p>
+                @else
+                <p>{{ $servico }}: <font color="red">Inativo</font>
+                </p>
+                @endif
+                @endforeach
         </form>
-    <p><a href="javascript:history.go(-1)"> Voltar para a página anterior </a></p>
+        <p><a href="javascript:history.go(-1)"> Voltar para a página anterior </a></p>
 
     </main>
 

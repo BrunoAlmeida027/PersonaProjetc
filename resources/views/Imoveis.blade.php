@@ -11,7 +11,9 @@
 
 <body>
     <main>
-       <center> <h2> Imóveis </h2></center>
+        <center>
+            <h2> Imóveis </h2>
+        </center>
         @php $cep = preg_replace("/[^0-9]/", "", $dadosImoveis['avancado']['imoveis']['cep']);
         $resultado_cep = json_decode(file_get_contents("https://viacep.com.br/ws/".$cep."/json/"));
         @endphp

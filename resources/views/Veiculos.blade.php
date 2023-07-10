@@ -15,13 +15,13 @@
             <h3> Automóvel : </h3>
 
             <p><b> Placa: {{$DadosVeiculosApi['avancado']['veiculos'][0]['placa']}}
-            <p> Modelo: {{$DadosVeiculosApi['avancado']['veiculos'][0]['marcamodelo']}}
-            <p> Ano Modelo: {{$DadosVeiculosApi['avancado']['veiculos'][0]['anomodelo']}}
-            <p> Ano Fabricação: {{$DadosVeiculosApi['avancado']['veiculos'][0]['anobase']}}
+                    <p> Modelo: {{$DadosVeiculosApi['avancado']['veiculos'][0]['marcamodelo']}}
+                    <p> Ano Modelo: {{$DadosVeiculosApi['avancado']['veiculos'][0]['anomodelo']}}
+                    <p> Ano Fabricação: {{$DadosVeiculosApi['avancado']['veiculos'][0]['anobase']}}
 
 
 
-            <p><a href="javascript:history.go(-1)"> Voltar para a página anterior </a></p>
+                    <p><a href="javascript:history.go(-1)"> Voltar para a página anterior </a></p>
 
         </form><b>
 </body>

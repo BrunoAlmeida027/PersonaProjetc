@@ -14,8 +14,4 @@ class ApiController extends Controller
     $dados = Http::get('https://test.alertrack.com.br/api/test_web/profile/get')->json();
     return view('DadosPessoal', ["dadosApi" => $dados]);
   }
-
-  
-
-
 }

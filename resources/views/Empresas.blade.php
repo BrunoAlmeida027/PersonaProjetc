@@ -10,21 +10,22 @@
 </head>
 
 <body>
-    <main><form>
-        @foreach($empresas as $empresa)
-        <h2>Empresa: {{ $empresa['Empresa'] }}</h2>
-        <ul>
-            @foreach($empresa as $campo => $valor)
-            @if ($campo !== 'Empresa')
-            <li><b>{{ $campo }}:</b> {!! $valor !!}</li>
-            @endif
+    <main>
+        <form>
+            @foreach($empresas as $empresa)
+            <h2>Empresa: {{ $empresa['Empresa'] }}</h2>
+            <ul>
+                @foreach($empresa as $campo => $valor)
+                @if ($campo !== 'Empresa')
+                <li><b>{{ $campo }}:</b> {!! $valor !!}</li>
+                @endif
+                @endforeach
+            </ul>
+            <hr>
             @endforeach
-        </ul>
-        <hr>
-        @endforeach
-<p><a href="javascript:history.go(-1)"> Voltar para a página anterior </a></p>
+            <p><a href="javascript:history.go(-1)"> Voltar para a página anterior </a></p>
 
-</form>
+        </form>
 
     </main>
 
