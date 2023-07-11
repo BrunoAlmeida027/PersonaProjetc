@@ -17,7 +17,7 @@
                 <h2> {{$dadosApi['basico']['nome']}} </h2>
             </center>
             <b> Nascimento: {{$dadosApi['basico']['nascimento']}}
-                <p class="message"> Mãe: {{$dadosApi['avancado']['mae']}}
+                <p> Mãe: {{$dadosApi['avancado']['mae']}}
                 <p>Nacionalidade: {{$dadosApi['avancado']['nacionalidade']}}
                 <p>Email: {{$dadosApi['avancado']['email_principal']}}
                 <p>Estado Civil: {{$dadosApi['avancado']['estado_civil']}}
