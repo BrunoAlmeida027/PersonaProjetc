@@ -11,6 +11,9 @@
 
 <body>
     <main>
+        <center>
+            <h2>Informações Pessoal</h2>
+        </center>
         <form>
             <center> <img src="{{$dadosApi ['avancado']['avatar']}}" alt="Perfil" width="200" height="200">
                 <hr>

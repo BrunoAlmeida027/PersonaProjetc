@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Redis;
 
 class EmpresasController extends Controller
 {
-    
-   
+
+
     public function dadosEmpresas()
     {
         $empresas = Redis::get('empresas');

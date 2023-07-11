@@ -17,9 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/Erro', function(){
-    return view('Erro');
-});
+// ROTA PARA PAGINA :    E R R O
+
+Route::view('Erro', 'Erro')->name('Erro');
+
+// ROTA PARA PAGINA : D A D O S - P E S S O A L
 
 Route::post('DadosPessoal', 'App\Http\Controllers\ApiController@dadosPessoalApi');
 Route::get('DadosPessoal', 'App\Http\Controllers\ApiController@exibirDadosPessoais')->name('dadosPessoal');
@@ -51,5 +53,3 @@ Route::post('Empresas', 'App\Http\Controllers\EmpresasController@dadosEmpresas')
 
 Route::get('Imoveis', 'App\Http\Controllers\ImoveisController@exibirImoveis');
 Route::post('Imoveis', 'App\Http\Controllers\ImoveisController@dadosImoveis')->name('imoveis');
-
-

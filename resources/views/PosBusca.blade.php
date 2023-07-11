@@ -9,7 +9,10 @@
 
 <body>
     <main>
-        <h2>Cliente:</h2>
+        <center>
+            <h2>Cliente</h2>
+        </center>
+
         <center>
             <center> <img src="{{$dadosPosBuscaApi ['avancado']['avatar']}}" alt="Perfil" width="200" height="200">
 

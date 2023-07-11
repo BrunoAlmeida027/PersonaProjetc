@@ -11,6 +11,9 @@
 
 <body>
     <main>
+        <center>
+            <h2> Empresas </h2>
+        </center>
         <form>
             @foreach($empresas as $empresa)
             <h2>Empresa: {{ $empresa['Empresa'] }}</h2>
@@ -29,7 +32,6 @@
 
     </main>
 
-    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 
 </html>

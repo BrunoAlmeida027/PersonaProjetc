@@ -11,7 +11,9 @@
 
 <body>
     <main>
-        <h3>Assinaturas :</h3>
+        <center>
+            <h2>Assinaturas </h2>
+        </center>
         <form>
             @foreach ($assinaturasApi['avancado']['servicos'] as $servico => $detalhes)
             @if ($detalhes['status'])

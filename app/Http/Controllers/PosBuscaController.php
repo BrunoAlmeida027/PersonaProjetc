@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use App\Exceptions\CpfNaoIdentificadoException;
 
 class PosBuscaController extends Controller
 {
@@ -31,7 +30,7 @@ class PosBuscaController extends Controller
                 return redirect()->route('PosBusca');
             } else {
                 // CPF inválido, lance a exceção
-                throw new CpfNaoIdentificadoException();
+                return redirect()->route('Erro');
             }
         }
     }

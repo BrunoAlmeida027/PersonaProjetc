@@ -11,8 +11,11 @@
 
 <body>
     <main>
+        <center>
+            <h2> Automóveis </h2>
+        </center>
+
         <form>
-            <h3> Automóvel : </h3>
 
             <p><b> Placa: {{$DadosVeiculosApi['avancado']['veiculos'][0]['placa']}}
                     <p> Modelo: {{$DadosVeiculosApi['avancado']['veiculos'][0]['marcamodelo']}}
