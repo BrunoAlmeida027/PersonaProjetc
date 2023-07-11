@@ -48,7 +48,7 @@ class EmpresasController extends Controller
             }
 
             Redis::setex('empresas', 180, json_encode($empresas));
-            // Armazena os dados das empresas no Redis por 2 minutos
+            // Armazena os dados das empresas no Redis por 3 minutos
         } else {
             $empresas = json_decode($empresas, true);
         }
