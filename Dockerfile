@@ -1,4 +1,4 @@
-FROM php:7.2-fpm
+FROM php:8.2-fpm
 
 # Copiar composer.lock e composer.json
 COPY composer.lock composer.json /var/www/
@@ -32,16 +32,19 @@ RUN docker-php-ext-install pdo_mysql mbstring zip exif pcntl
 # Instalar extensão Redis
 RUN pecl install redis && docker-php-ext-enable redis
 
-# Instalar extensão GD
+# Instalar dependências do GD
+RUN apt-get update && apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng-dev
+
+# Configurar e instalar extensão GD
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) gd
+	&& docker-php-ext-install -j$(nproc) gd
 
 # Instalar o Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Adicionar usuário para a aplicação Laravel
-RUN groupadd -g 1000 www
-RUN useradd -u 1000 -ms /bin/bash -g www www
+RUN groupadd -g 1000 www && \
+    useradd -u 1000 -ms /bin/bash -g www www
 
 # Copiar os arquivos existentes do diretório da aplicação
 COPY . /var/www

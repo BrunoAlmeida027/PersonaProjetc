@@ -8,8 +8,12 @@ use Illuminate\Support\Facades\Http;
 
 class EmpresasController extends Controller
 {
+    
+   
     public function dadosEmpresas()
     {
+      
+
         $dados = Http::get('https://test.alertrack.com.br/api/test_web/profile/get')->json();
         $empresas = [];
 
@@ -42,4 +46,6 @@ class EmpresasController extends Controller
 
         return view('Empresas', ['empresas' => $empresas]);
     }
+
+  
 }

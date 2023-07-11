@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: linux-console.net/php
+    image: projetopersona
     container_name: app
     restart: unless-stopped
     tty: true
@@ -27,7 +27,7 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - "80:80"
+      - "8000:80"
       - "443:443"
     volumes:
       - ./:/var/www
@@ -36,13 +36,13 @@ services:
       - app-network
 
   # Redis Service
-  redis: 
-  image: redis:4.0 
-  container_name: app_redis 
-  ports: 
-    - "6382:6379" 
-  redes: 
-    - app-network
+  redis:
+    image: redis:4.0
+    container_name: app_redis
+    ports:
+      - "6382:6379"
+    networks:
+      - app-network
 
 # Docker Networks
 networks:
