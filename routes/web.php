@@ -37,14 +37,12 @@ Route::post('Veiculos', 'App\Http\Controllers\VeiculosController@dadosVeiculos')
 Route::get('/Veiculos', 'VeiculosController@exibirVeiculos')->name('veiculos');
 
 // ROTAS PARA PAGINA : A S S I N A T U R A S 
-Route::get('Empresas', 'App\Http\Controllers\AssinaturasController@exibirassinaturas');
-
+Route::get('Assinatura', 'App\Http\Controllers\AssinaturasController@exibirassinaturas');
 Route::post('Assinatura', 'App\Http\Controllers\AssinaturasController@assinaturas')->name('assinaturas');
 
 // ROTAS PARA PAGINA : E M P R E S A S 
 
 Route::get('Empresas', 'App\Http\Controllers\EmpresasController@exibirEmpresas');
-
 Route::post('Empresas', 'App\Http\Controllers\EmpresasController@dadosEmpresas')->name('dadosCNPJ');
 
 
