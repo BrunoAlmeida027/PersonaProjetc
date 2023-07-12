@@ -14,6 +14,8 @@ class PosBuscaController extends Controller
         return view('PosBusca', ["dadosPosBuscaApi" => $dados]);
     }
 
+
+
     public function buscarPerfil(Request $request)
     {
         // Verificar se o campo "cpf" está presente na solicitação
@@ -32,6 +34,36 @@ class PosBuscaController extends Controller
                 // CPF inválido, lance a exceção
                 return redirect()->route('Erro');
             }
+        }
+    }
+
+    static function calcularPerfil()
+    {
+        $dados = Http::get('https://test.alertrack.com.br/api/test_web/profile/get')->json();
+
+        // Definindo os pesos para cada propriedade
+        $pesoRenda = 0.1;
+        $pesoEmpresas = 0.3;
+        $pesoImoveis = 0.15;
+        $pesoVeiculo = 0.05;
+
+        $renda = preg_replace('/\D/', '', $dados['avancado']['rendas'][0]['valorrenda']);
+        $quantidadeEmpresas = count($dados['avancado']['sociedades']);
+        $quantidadeImoveis = count($dados['avancado']['imoveis']);
+        $possuiVeiculo = count($dados['avancado']['veiculos']);
+
+        // Fazendo o calculo
+        $pontuacao = ($renda * $pesoRenda) + ($quantidadeEmpresas * $pesoEmpresas) + ($quantidadeImoveis * $pesoImoveis) + ($possuiVeiculo * $pesoVeiculo);
+
+        // Classificando o Perfil
+        if ($pontuacao >= 2500) {
+            echo  "<h1 style='color:green'>Perfil Classe A </h1>";
+        } elseif ($pontuacao >= 1300) {
+            echo  "<h1 style='color:yellow'>Perfil Classe B </h1>";
+        } elseif ($pontuacao >= 500) {
+            echo  "<h1 style='color:orange'>Perfil Classe C </h1>";
+        } else {
+            echo  "<h1 style='color:red'>Perfil Classe D </h1>";
         }
     }
 }

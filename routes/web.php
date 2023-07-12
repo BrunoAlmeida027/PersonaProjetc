@@ -29,7 +29,6 @@ Route::get('DadosPessoal', 'App\Http\Controllers\ApiController@exibirDadosPessoa
 // ROTAS PARA PAGINA  :    P O S B U S C A 
 
 Route::post('PosBusca', 'App\Http\Controllers\PosBuscaController@buscarPerfil')->name('PosBusca');
-
 Route::get('PosBusca', 'App\Http\Controllers\PosBuscaController@dadosPosBuscaApi');
 
 // ROTAS PARA PAGINA : V E I C U L O S 
