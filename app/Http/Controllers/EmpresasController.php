@@ -34,7 +34,7 @@ class EmpresasController extends Controller
                     'Status' => $resultado_cnpj->status,
                     'Tipo da Empresa' => $resultado_cnpj->tipo,
                     'Porte' => $resultado_cnpj->porte,
-                    'Participação Sociedade' => $socio['participacaosociedade'],
+                    'Participação Sociedade' => $socio['participacaosociedade'] . " % ",
                     'Data de Abertura' => $resultado_cnpj->abertura,
                     'Natureza Jurídica' => $resultado_cnpj->natureza_juridica,
                     'logradouro' => $resultado_cnpj->logradouro,
