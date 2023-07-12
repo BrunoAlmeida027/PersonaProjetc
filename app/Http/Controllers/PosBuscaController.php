@@ -37,7 +37,7 @@ class PosBuscaController extends Controller
         }
     }
 
-    static function calcularPerfil()
+    public function calcularPerfil()
     {
         $dados = Http::get('https://test.alertrack.com.br/api/test_web/profile/get')->json();
 
