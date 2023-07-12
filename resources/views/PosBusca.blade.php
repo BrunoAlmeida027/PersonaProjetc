@@ -10,13 +10,13 @@
 <body>
     <main>
         <center>
-            @php
-            $controller = new \App\Http\Controllers\PosBuscaController();
-            $perfil = $controller->calcularPerfil();
-            @endphp
-            <h2>Cliente</h2>
-            {{ $perfil }}
+            <h2>Cliente </h2>
         </center>
+        @php
+        $controller = new \App\Http\Controllers\PosBuscaController();
+        $perfil = $controller->calcularPerfil();
+        @endphp
+        {{ $perfil }}
         <center>
             <center> <img src="{{$dadosPosBuscaApi ['avancado']['avatar']}}" alt="Perfil" width="200" height="200">
 
