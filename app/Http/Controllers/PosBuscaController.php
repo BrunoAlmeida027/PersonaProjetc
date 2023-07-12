@@ -42,7 +42,7 @@ class PosBuscaController extends Controller
         $dados = Http::get('https://test.alertrack.com.br/api/test_web/profile/get')->json();
 
         // Definindo os pesos para cada propriedade
-        $pesoRenda = 0.1;
+        $pesoRenda = 0.001;
         $pesoEmpresas = 0.3;
         $pesoImoveis = 0.15;
         $pesoVeiculo = 0.05;
@@ -54,13 +54,12 @@ class PosBuscaController extends Controller
 
         // Fazendo o calculo
         $pontuacao = ($renda * $pesoRenda) + ($quantidadeEmpresas * $pesoEmpresas) + ($quantidadeImoveis * $pesoImoveis) + ($possuiVeiculo * $pesoVeiculo);
-
         // Classificando o Perfil
-        if ($pontuacao >= 2500) {
+        if ($pontuacao >= 5000) {
             echo  "<h1 style='color:green'>Perfil Classe A </h1>";
-        } elseif ($pontuacao >= 1300) {
+        } elseif ($pontuacao >= 3000) {
             echo  "<h1 style='color:yellow'>Perfil Classe B </h1>";
-        } elseif ($pontuacao >= 500) {
+        } elseif ($pontuacao >= 1000) {
             echo  "<h1 style='color:orange'>Perfil Classe C </h1>";
         } else {
             echo  "<h1 style='color:red'>Perfil Classe D </h1>";
