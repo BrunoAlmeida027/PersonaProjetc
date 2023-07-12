@@ -42,18 +42,18 @@ class PosBuscaController extends Controller
         $dados = Http::get('https://test.alertrack.com.br/api/test_web/profile/get')->json();
 
         // Definindo os pesos para cada propriedade
-        $pesoRenda = 0.001;
-        $pesoEmpresas = 0.3;
-        $pesoImoveis = 0.15;
-        $pesoVeiculo = 0.05;
+        $PESO_RENDA = 0.001;
+        $PESO_EMPRESA = 0.3;
+        $PESO_IMOVEIS = 0.15;
+        $PESO_VEICULO = 0.05;
 
-        $renda = preg_replace('/\D/', '', $dados['avancado']['rendas'][0]['valorrenda']);
-        $quantidadeEmpresas = count($dados['avancado']['sociedades']);
-        $quantidadeImoveis = count($dados['avancado']['imoveis']);
-        $possuiVeiculo = count($dados['avancado']['veiculos']);
+        $RENDA = preg_replace('/\D/', '', $dados['avancado']['rendas'][0]['valorrenda']);
+        $QUANTIDADE_EMPRESAS = count($dados['avancado']['sociedades']);
+        $QUANTIDADE_IMOVEIS = count($dados['avancado']['imoveis']);
+        $POSSUI_VEICULO = count($dados['avancado']['veiculos']);
 
         // Fazendo o calculo
-        $pontuacao = ($renda * $pesoRenda) + ($quantidadeEmpresas * $pesoEmpresas) + ($quantidadeImoveis * $pesoImoveis) + ($possuiVeiculo * $pesoVeiculo);
+        $pontuacao = ($RENDA * $PESO_RENDA) + ($QUANTIDADE_EMPRESAS * $PESO_EMPRESA) + ($QUANTIDADE_IMOVEIS * $PESO_IMOVEIS) + ($POSSUI_VEICULO * $PESO_VEICULO);
         // Classificando o Perfil
         if ($pontuacao >= 5000) {
             echo  "<h1 style='color:green'>Perfil Classe A </h1>";
